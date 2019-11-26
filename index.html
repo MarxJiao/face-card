@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>face card</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .result-card {
+            box-sizing: border-box;
+            margin: 15px;
+            padding: 0;
+            color: rgba(0,0,0,0.65);
+            font-size: 14px;
+            line-height: 1.5;
+            list-style: none;
+            background: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+        }
+
+        .card-title {
+            color: #000;
+            font-weight: 500;
+            padding: 10px 15px 5px;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .card-text {
+            padding: 0 15px 10px;
+            line-height: 1.5;
+        }
+        #image {
+            width: 100%;
+            height: auto;
+        }
+        .miniprogram {
+            text-align: center;
+        }
+        .miniprogram img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="result-card">
+            <img id="image" src="" alt="face" />
+            <h1 class="card-title" id="title"></h1>
+            <p class="card-text" id="content"></p>
+        </div>
+        <div class="miniprogram">
+            <img src="./gh_22508b216a19_258.jpg" alt="颜值测量小程序" >
+        </div>
+    </div>
+    <script>
+        var queryStr = location.search.replace('?', '').replace('<', '').replace('>', '').replace('script', '');
+        var queryArr = queryStr.split('&');
+        var queryObj = {};
+        for (let item of queryArr) {
+            itemArr = item.split('=');
+            queryObj[itemArr[0]] = itemArr[1];
+        }
+        decodeURIComponent
+        document.getElementById('image').src = decodeURIComponent(queryObj.src);
+        document.getElementById('title').innerText = decodeURIComponent(queryObj.title);
+        document.getElementById('content').innerText = decodeURIComponent(queryObj.content);
+    </script>
+</body>
+</html>
